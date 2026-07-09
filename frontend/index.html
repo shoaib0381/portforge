@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PortForge | CUDA to HIP in Minutes</title>
+  <meta name="description" content="An AI compiler agent that automatically translates, compiles, and optimizes NVIDIA CUDA kernels to AMD HIP/ROCm code in minutes, running on AMD GPU Cloud.">
+  <script src="https://cdn.jsdelivr.net/npm/motion@11.11.13/dist/motion.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Sticky Header -->
+  <header>
+    <div class="container">
+      <a href="#" class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="20" viewBox="0 0 28 20" fill="none" style="flex-shrink:0;"><polyline points="8,3 2,10 8,17" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><line x1="12" y1="10" x2="20" y2="10" stroke="#CC0000" stroke-width="2" stroke-linecap="round"/><polyline points="17,6 20,10 17,14" stroke="#CC0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><polyline points="22,3 26,10 22,17" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+        <span>PortForge</span>
+      </a>
+
+      <!-- Hamburger Menu Button -->
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Menu">
+        <span class="toggle-bar"></span>
+        <span class="toggle-bar"></span>
+        <span class="toggle-bar"></span>
+      </button>
+
+      <nav class="nav-links" id="nav-links">
+        <a href="#features">How it Works</a>
+        <a href="#playground">Demo</a>
+        <a href="#team">Team</a>
+        <a href="https://github.com/muhammadshoaib/portforge" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="#playground" class="nav-cta mobile-only-cta">Try Demo</a>
+      </nav>
+
+      <a href="#playground" class="nav-cta desktop-only-cta">Try Demo</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <canvas id="hero-bg-canvas"></canvas>
+    <div class="container hero-content">
+      <div class="section-tag">
+        <span class="dot-green"></span>
+        <span class="dot-red"></span>
+      </div>
+      <h1 class="hero-title">
+        <span class="hero-word hw-cuda" style="animation-delay: 0.2s">CUDA</span>
+        <span class="hero-word hw-to" style="animation-delay: 0.5s">to</span>
+        <span class="hero-word hw-hip" style="animation-delay: 0.8s">HIP.</span>
+        <br>
+        <span class="hero-word hw-weeks nvidia-gradient" style="animation-delay: 1.3s">Weeks</span>
+        <span class="hero-word hw-to2" style="animation-delay: 1.6s">to</span>
+        <span class="hero-word hw-minutes amd-gradient" id="typewriter-target" style="animation-delay: 1.9s"></span>
+      </h1>
+      <p class="hero-description">
+        An AI compiler agent that automatically translates, compiles, and benchmarks your NVIDIA CUDA kernels on real AMD MI300X hardware with zero manual intervention.
+      </p>
+      <div class="hero-actions">
+        <a href="#playground" class="btn btn-gradient-border">See it in Action</a>
+        <a href="https://github.com/muhammadshoaib/portforge" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+          View on GitHub
+        </a>
+      </div>
+
+      <!-- Horizontal Strip of Badges -->
+      <div class="tech-badges-strip">
+        <div class="tech-badges-track">
+          <div class="badge-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="badge-icon"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg><span>AMD GPU Cloud</span></div>
+          <div class="badge-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="badge-icon"><rect x="4" y="4" width="16" height="16" rx="2"></rect><rect x="9" y="9" width="6" height="6"></rect><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 15h3M1 9h3M1 15h3"></path></svg><span>ROCm</span></div>
+          <div class="badge-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="badge-icon"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg><span>CUDA</span></div>
+          <div class="badge-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="badge-icon"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"></path></svg><span>Python</span></div>
+          <div class="badge-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="badge-icon"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg><span>LLM API</span></div>
+          <!-- Duplicated for seamless loop -->
+          <div class="badge-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="badge-icon"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg><span>AMD GPU Cloud</span></div>
+          <div class="badge-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="badge-icon"><rect x="4" y="4" width="16" height="16" rx="2"></rect><rect x="9" y="9" width="6" height="6"></rect><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 15h3M1 9h3M1 15h3"></path></svg><span>ROCm</span></div>
+          <div class="badge-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="badge-icon"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg><span>CUDA</span></div>
+          <div class="badge-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="badge-icon"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"></path></svg><span>Python</span></div>
+          <div class="badge-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="badge-icon"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg><span>LLM API</span></div>
+        </div>
+      </div>
+
+      <!-- Live Code Porting Demo Banner -->
+      <div class="live-demo-container">
+        <!-- CUDA side -->
+        <div class="code-panel">
+          <div class="code-header">
+            <div class="code-header-title">
+              <span style="color: var(--nvidia); font-weight: bold;">CUDA</span>
+              <span>kernel.cu</span>
+            </div>
+            <div class="window-dots">
+              <span class="window-dot"></span>
+              <span class="window-dot"></span>
+              <span class="window-dot"></span>
+            </div>
+          </div>
+          <div class="code-content" id="cuda-hero-code">
+<span class="comment">// CUDA Vector Add Kernel</span>
+<span class="macro">__global__</span> <span class="type">void</span> <span class="function">vectorAdd</span>(<span class="type">const float</span> *A, <span class="type">const float</span> *B, <span class="type">float</span> *C, <span class="type">int</span> numElements) {
+    <span class="type">int</span> i = <span class="keyword">blockDim</span>.x * <span class="keyword">blockIdx</span>.x + <span class="keyword">threadIdx</span>.x;
+    <span class="keyword">if</span> (i < numElements) {
+        C[i] = A[i] + B[i];
+    }
+}
+
+<span class="type">int</span> <span class="function">main</span>() {
+    <span class="type">float</span> *d_A, *d_B, *d_C;
+    <span class="function">cudaMalloc</span>(&d_A, size);
+    <span class="function">cudaMalloc</span>(&d_B, size);
+    <span class="function">cudaMalloc</span>(&d_C, size);
+    
+    <span class="function">cudaMemcpy</span>(d_A, h_A, size, <span class="keyword">cudaMemcpyHostToDevice</span>);
+    <span class="function">cudaMemcpy</span>(d_B, h_B, size, <span class="keyword">cudaMemcpyHostToDevice</span>);
+
+    <span class="type">int</span> threadsPerBlock = <span class="number">256</span>;
+    <span class="type">int</span> blocksPerGrid = (numElements + threadsPerBlock - <span class="number">1</span>) / threadsPerBlock;
+    vectorAdd<span class="macro">&lt;&lt;&lt;</span>blocksPerGrid, threadsPerBlock<span class="macro">&gt;&gt;&gt;</span>(d_A, d_B, d_C, numElements);
+}</div>
+        </div>
+
+        <!-- Center Agent Controller -->
+        <div class="agent-flow-center">
+          <div class="flow-icon-circle">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-amd"><circle cx="12" cy="12" r="10"></circle><path d="M12 2v20"></path><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            <div class="flow-pulse" id="agent-pulse"></div>
+          </div>
+          <div class="agent-status-label">Agent Status</div>
+          <div class="agent-status-msg" id="agent-status-text">INITIALIZING</div>
+          
+          <!-- Animated Flow Arrow Connection -->
+          <div class="flow-arrow-container">
+            <div class="flow-arrow-line"></div>
+            <div class="flow-arrow-head">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-amd">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </div>
+          </div>
+
+          <div class="progress-bar-container">
+            <div class="progress-bar-fill" id="agent-progress-fill"></div>
+          </div>
+        </div>
+
+        <!-- HIP side -->
+        <div class="code-panel">
+          <div class="code-header">
+            <div class="code-header-title">
+              <span style="color: var(--amd); font-weight: bold;">HIP (ROCm)</span>
+              <span>kernel.hip.cpp</span>
+            </div>
+            <div class="window-dots">
+              <span class="window-dot"></span>
+              <span class="window-dot"></span>
+              <span class="window-dot"></span>
+            </div>
+          </div>
+          <div class="code-content" id="hip-hero-code" style="color: var(--text-muted);">
+<span class="comment">// HIP code will be compiled here...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Bar -->
+  <section class="stats-bar fade-in-up" id="stats-bar">
+    <div class="container stats-bar-inner">
+      <div class="stat-bar-item">
+        <div class="stat-bar-num" data-target="5" data-decimals="0">0</div>
+        <div class="stat-bar-label">Kernels Migrated</div>
+      </div>
+      <div class="stat-bar-sep"></div>
+      <div class="stat-bar-item">
+        <div class="stat-bar-num" data-target="152" data-decimals="0">0</div>
+        <div class="stat-bar-label">CUDA Calls Converted</div>
+      </div>
+      <div class="stat-bar-sep"></div>
+      <div class="stat-bar-item">
+        <div class="stat-bar-num" data-target="100" data-suffix="%" data-decimals="0">0%</div>
+        <div class="stat-bar-label">Migration Success Rate</div>
+      </div>
+      <div class="stat-bar-sep"></div>
+      <div class="stat-bar-item">
+        <div class="stat-bar-num" data-target="0.003" data-prefix="$" data-decimals="3">$0.000</div>
+        <div class="stat-bar-label">Total API Cost</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="features">
+    <div class="container">
+      <div class="section-tag">
+        <span class="dot-green"></span>
+        <span class="dot-red"></span>
+        Pipeline Workflow
+      </div>
+      <h2 class="section-title">CUDA-to-HIP Translation Pipeline</h2>
+      <p class="section-subtitle">
+        Watch how our agent automates the migration pipeline through AST analysis, deep rewriting, and iterative sandboxed optimization.
+      </p>
+
+      <div class="pipeline-container" id="pipeline-diagram">
+        <!-- Step 1 -->
+        <div class="pipeline-step fade-in-up" data-index="1">
+          <div class="pipeline-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+          </div>
+          <h3 id="parse-card-title">PARSE</h3>
+<p id="parse-card-val"></p>
+          <p>Parses AST layouts, kernel code blocks, and driver memory directives from host structures.</p>
+        </div>
+
+        <!-- Connector 1 -->
+        <div class="pipeline-connector" data-index="1">
+          <div class="connector-line"></div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="pipeline-step fade-in-up" data-index="2">
+          <div class="pipeline-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+          </div>
+          <h3 id="migrate-card-title">MIGRATE</h3>
+<p id="migrate-card-val"></p>
+          <p>Maps device layouts, thread block sizes, warp constraints, and memory hierarchy limits.</p>
+        </div>
+
+        <!-- Connector 2 -->
+        <div class="pipeline-connector" data-index="2">
+          <div class="connector-line"></div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="pipeline-step fade-in-up" data-index="3">
+          <div class="pipeline-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+              <path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4z"></path>
+            </svg>
+          </div>
+          <h3 id="compile-card-title">COMPILE</h3>
+<p id="compile-card-val">Awaiting AMD GPU (hipcc, ROCm 6.x)</p>
+          <p>Transforms library calls, warps size constraints, and launches syntax to HIP runtime calls.</p>
+        </div>
+
+        <!-- Connector 3 -->
+        <div class="pipeline-connector" data-index="3">
+          <div class="connector-line"></div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="pipeline-step fade-in-up" data-index="4">
+          <div class="pipeline-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+            </svg>
+          </div>
+          <h3 id="benchmark-card-title">BENCHMARK</h3>
+<p id="benchmark-card-val">Not run yet (rocprof, MI300X)</p>
+          <p>Compiles in parallel hipcc sandboxes and measures latency parity against native environments.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Sandbox/Playground -->
+  <section id="playground" class="playground">
+    <div class="container">
+      <div class="section-tag">
+        <span class="dot-red"></span>
+        Interactive Console
+      </div>
+      <h2 class="section-title">Test the Agent Real-Time</h2>
+      <p class="section-subtitle">
+        Select a legacy CUDA GPU kernel template below and watch the agent refactor, sandbox compile, and verify the resulting HIP ROCm translation.
+      </p>
+
+      <!-- File Upload Drop Zone -->
+      <div id="cu-drop-zone" class="cu-drop-zone" onclick="document.getElementById('cu-file-input').click()">
+        <input type="file" id="cu-file-input" accept=".cu" style="display:none" onchange="handleCuFileSelect(event)">
+        <div class="cu-drop-zone-content">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px;flex-shrink:0;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          <span id="cu-drop-label">Drop your <code>.cu</code> file here or <u>click to browse</u></span>
+        </div>
+      </div>
+      <div id="cu-upload-status" class="cu-upload-status" style="display:none;"></div>
+
+      <!-- Toggle/Tab Selectors -->
+      <div class="snippet-selector-bar">
+                                        <div class="snippet-tabs">
+          <button class="snippet-toggle-btn active" id="btn-vectorAdd" onclick="selectPlaygroundSnippet('vectorAdd')">vectorAdd.cu</button>
+          <button class="snippet-toggle-btn" id="btn-matrixMul" onclick="selectPlaygroundSnippet('matrixMul')">matrixMul.cu</button>
+          <button class="snippet-toggle-btn" id="btn-convolutionSeparable" onclick="selectPlaygroundSnippet('convolutionSeparable')">convolutionSeparable.cu</button>
+          <button class="snippet-toggle-btn" id="btn-reduction_kernel" onclick="selectPlaygroundSnippet('reduction_kernel')">reduction_kernel.cu</button>
+          <button class="snippet-toggle-btn" id="btn-warpAggregatedAtomicsCG" onclick="selectPlaygroundSnippet('warpAggregatedAtomicsCG')">warpAggregatedAtomicsCG.cu</button>
+          <button class="snippet-toggle-btn snippet-toggle-btn--custom" id="btn-custom" style="display:none;" onclick="selectCustomUpload()">Custom ✓</button>
+        </div>
+        <div style="display: flex; gap: 8px;">
+          <button class="btn btn-amd-accent" id="playground-run-btn" onclick="triggerPlaygroundTranslation()">Run Compiler Agent</button>
+        </div>
+      </div>
+
+      <!-- Split Panel Code Comparison Component -->
+      <div class="split-comparison-container">
+        <!-- Left Panel: CUDA (NVIDIA) -->
+        <div class="comparison-panel border-nvidia-tint">
+          <div class="panel-label text-nvidia">CUDA (NVIDIA)</div>
+          <div class="panel-header" style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="display:flex;align-items:center;gap:8px;">
+              cuda_kernel.cu
+              <span id="cuda-edit-hint" class="panel-edit-hint">Click to edit</span>
+            </span>
+            <span style="display:flex;gap:6px;align-items:center;">
+              <button class="copy-btn" id="reset-cuda-btn" onclick="resetPanel('cuda')" title="Reset to original">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="12" height="12" style="margin-right:4px;"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                Reset
+              </button>
+              <button class="copy-btn" id="copy-cuda-btn" onclick="copyPlaygroundCode('cuda-playground-code', 'copy-cuda-btn', 'Copy')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="12" height="12" style="margin-right: 4px;"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+                Copy
+              </button>
+            </span>
+          </div>
+          <pre class="panel-editor panel-editable" id="cuda-playground-code" contenteditable="true" spellcheck="false"></pre>
+        </div>
+
+        <!-- Right Panel: HIP/ROCm (AMD) -->
+        <div class="comparison-panel border-amd-tint">
+          <div class="panel-label text-amd">HIP/ROCm (AMD)</div>
+          <div class="panel-header" style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="display:flex;align-items:center;gap:8px;">
+              translated_kernel.hip.cpp
+              <span class="panel-edit-hint panel-edit-hint--amd">Auto-generated — you can edit</span>
+            </span>
+            <span style="display:flex;gap:6px;align-items:center;">
+              <button class="copy-btn" id="reset-hip-btn" onclick="resetPanel('hip')" title="Reset to original">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="12" height="12" style="margin-right:4px;"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                Reset
+              </button>
+              <button class="copy-btn" id="copy-hip-btn" onclick="copyPlaygroundCode('hip-playground-code', 'copy-hip-btn', 'Copy')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="12" height="12" style="margin-right: 4px;"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+                Copy
+              </button>
+            </span>
+          </div>
+          <pre class="panel-editor panel-editable panel-editable--hip" id="hip-playground-code" contenteditable="true" spellcheck="false"></pre>
+        </div>
+      </div>
+
+      <!-- Terminal-style Log Output Card -->
+      <div class="terminal-card">
+        <div class="terminal-card-header">
+          <div class="window-dots">
+            <span class="window-dot" style="background-color: #ff5f56;"></span>
+            <span class="window-dot" style="background-color: #ffbd2e;"></span>
+            <span class="window-dot" style="background-color: #27c93f;"></span>
+          </div>
+          <span class="terminal-card-title">AMD GPU Cloud Sandbox Terminal</span>
+          <span id="gpu-source-badge" style="margin-left: auto;"></span>
+        </div>
+        <div class="terminal-card-body" id="playground-terminal-console">
+          <span class="comment">// Select a kernel and click "Run Compiler Agent" to execute translation.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Statistics Grid -->
+  <section id="stats" class="stats">
+    <div class="container">
+      <div class="section-tag">
+        <span class="dot-green"></span>
+        Benchmark Performance
+      </div>
+      <h2 class="section-title">Designed for Scale, Built for Speed</h2>
+      <p class="section-subtitle">
+        Performance measurements comparing manual translation methods versus our AMD GPU Cloud-hosted automated compiler agent.
+      </p>
+
+      <div class="stats-grid">
+        <!-- Stat 1 -->
+        <div class="stat-card fade-in-up">
+          <div class="stat-value" data-target="4" data-suffix=" minutes">0 minutes</div>
+          <div class="stat-label">vs weeks manually</div>
+          <div class="stat-desc">Accelerate legacy CUDA translation to HIP kernels down to minutes.</div>
+        </div>
+
+        <!-- Stat 2 -->
+        <div class="stat-card fade-in-up">
+          <div class="stat-value" data-target="99" data-suffix="%">0%</div>
+          <div class="stat-label">compile success rate</div>
+          <div class="stat-desc">Sandboxed compilation and AST error correction loop checks code parity.</div>
+        </div>
+
+        <!-- Stat 3 -->
+        <div class="stat-card fade-in-up">
+          <div class="stat-value" data-target="98" data-suffix="%">0%</div>
+          <div class="stat-label">performance parity</div>
+          <div class="stat-desc">Direct output compiles to native ROCm code without overhead wrappers.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Infrastructure Section -->
+  <section id="infra" class="infra-section">
+    <div class="container">
+      <div class="infra-content">
+        <div class="infra-text">
+          <div class="section-tag">
+            <span class="dot-red"></span>
+            AMD Instinct
+          </div>
+          <h2>AMD Instinct™ MI300X Infrastructure</h2>
+          <p>
+            To run high-performance AI compilers, our agent requires serious power. We host the pipeline entirely on AMD Instinct MI300X GPU Cloud instances.
+          </p>
+          <div class="infra-features">
+            <div class="infra-feat-item">
+              <div class="infra-feat-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-amd"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </div>
+              <div class="infra-feat-text">
+                <h4>Ultra-Parallel Sandboxing</h4>
+                <p>Compile tests execute concurrently across isolated ROCm docker structures, delivering compiler diagnostics in milliseconds.</p>
+              </div>
+            </div>
+
+            <div class="infra-feat-item">
+              <div class="infra-feat-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-amd"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </div>
+              <div class="infra-feat-text">
+                <h4>Fine-Tuned Optimization Models</h4>
+                <p>Our custom code-correcting agent models are optimized and run directly with high-bandwidth ROCm execution contexts.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Benchmark Graph Visualizer -->
+        <div class="gpu-viz">
+          <div class="gpu-viz-title">
+            <span>Kernel Compile Speed</span>
+            <div class="viz-legend">
+              <div class="legend-item">
+                <span class="legend-color" style="background: var(--nvidia)"></span>
+                <span style="font-size: 10px;">CUDA</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-color" style="background: var(--amd)"></span>
+                <span style="font-size: 10px;">ROCm HIP</span>
+              </div>
+            </div>
+          </div>
+          <div class="graph-container">
+            <div class="bar-row">
+              <span class="bar-label">Vector Add</span>
+              <div class="bar-track">
+                <div class="bar-fill nvidia-bar" data-width="95"></div>
+              </div>
+              <span class="bar-value">95%</span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">Matrix Mult</span>
+              <div class="bar-track">
+                <div class="bar-fill amd-bar" data-width="100"></div>
+              </div>
+              <span class="bar-value">100%</span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">FFT Kernel</span>
+              <div class="bar-track">
+                <div class="bar-fill nvidia-bar" data-width="92"></div>
+              </div>
+              <span class="bar-value">92%</span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">ResNet-50</span>
+              <div class="bar-track">
+                <div class="bar-fill amd-bar" data-width="98"></div>
+              </div>
+              <span class="bar-value">98%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section id="team" class="team-section">
+    <div class="container">
+      <div class="section-tag">
+        <span class="dot-red"></span>
+        Contributors
+      </div>
+      <h2 class="section-title">Team</h2>
+      <p class="section-subtitle">
+        Built by high-performance systems and compiler engineers to solve the real-world challenge of seamless GPU ecosystem migration.
+      </p>
+      
+                              <div class="team-grid">
+        <div class="team-card fade-in-up">
+          <img class="team-avatar" src="assets/shoaib.jpg" alt="Muhammad Shoaib Altaf">
+          <div class="team-info">
+            <h3>Muhammad Shoaib Altaf &mdash; Lead Developer</h3>
+            <div class="social-links" style="display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap;">
+              <a href="https://github.com/shoaib-1965" target="_blank" rel="noopener noreferrer" class="github-btn" aria-label="GitHub Profile">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                <span>shoaib-1965</span>
+              </a>
+              <a href="https://www.linkedin.com/in/shoaib-altaf/" target="_blank" rel="noopener noreferrer" class="linkedin-btn" aria-label="LinkedIn Profile">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                <span>shoaib-altaf</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="team-card fade-in-up">
+          <img class="team-avatar" src="assets/faizan.jpg" alt="Faizan Haider">
+          <div class="team-info">
+            <h3>Faizan Haider &mdash; AI Engineer</h3>
+            <div class="social-links" style="display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap;">
+              <a href="https://github.com/faizan-haider5" target="_blank" rel="noopener noreferrer" class="github-btn" aria-label="GitHub Profile">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                <span>faizan-haider5</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Bottom -->
+  <section class="cta-section fade-in-up">
+    <div class="container">
+      <div class="cta-glow-spot"></div>
+      <h2>Supercharge Your ROCm Migration</h2>
+      <p>Stop rewriting kernels manually. Let our compiler agent translate, test, and package your legacy CUDA code into optimized HIP files.</p>
+      <div class="cta-buttons">
+        <a href="#playground" class="btn btn-primary">Try Interactive Demo</a>
+        <a href="https://github.com/muhammadshoaib/portforge" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Explore GitHub Repository</a>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-content">
+      <div class="footer-center">
+        <a href="https://github.com/muhammadshoaib/portforge" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+          <span>GitHub Repository</span>
+        </a>
+      </div>
+      <div class="footer-right">
+        <span>&copy; 2026 PortForge &mdash; AMD Developer Hackathon ACT II</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

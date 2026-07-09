@@ -1,0 +1,87 @@
+{
+  "filename": "reduction_kernel.cu",
+  "total_lines": 1,
+  "cuda_calls_found": [
+    {
+      "call": "__device__",
+      "line": 1,
+      "hip_equivalent": "__device__"
+    },
+    {
+      "call": "__device__",
+      "line": 1,
+      "hip_equivalent": "__device__"
+    },
+    {
+      "call": "__device__",
+      "line": 1,
+      "hip_equivalent": "__device__"
+    },
+    {
+      "call": "__device__",
+      "line": 1,
+      "hip_equivalent": "__device__"
+    },
+    {
+      "call": "__device__",
+      "line": 1,
+      "hip_equivalent": "__device__"
+    },
+    {
+      "call": "__device__",
+      "line": 1,
+      "hip_equivalent": "__device__"
+    },
+    {
+      "call": "__global__",
+      "line": 1,
+      "hip_equivalent": "__global__"
+    },
+    {
+      "call": "__global__",
+      "line": 1,
+      "hip_equivalent": "__global__"
+    },
+    {
+      "call": "__global__",
+      "line": 1,
+      "hip_equivalent": "__global__"
+    },
+    {
+      "call": "__global__",
+      "line": 1,
+      "hip_equivalent": "__global__"
+    },
+    {
+      "call": "__global__",
+      "line": 1,
+      "hip_equivalent": "__global__"
+    },
+    {
+      "call": "__global__",
+      "line": 1,
+      "hip_equivalent": "__global__"
+    },
+    {
+      "call": "__global__",
+      "line": 1,
+      "hip_equivalent": "__global__"
+    },
+    {
+      "call": "__device__",
+      "line": 1,
+      "hip_equivalent": "__device__"
+    },
+    {
+      "call": "__global__",
+      "line": 1,
+      "hip_equivalent": "__global__"
+    },
+    {
+      "call": "<<<...>>>",
+      "line": 1,
+      "hip_equivalent": "hipLaunchKernelGGL"
+    }
+  ],
+  "total_conversions_needed": 16
+}

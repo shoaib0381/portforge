@@ -1,0 +1,1 @@
+The provided CUDA code is missing (placeholder "Loading from API..."). Without the actual source, no conversion can be performed. Please supply the original CUDA C++ code so that I can accurately migrate it to HIP.

@@ -1,0 +1,67 @@
+{
+  "filename": "vectorAdd.cu",
+  "total_lines": 196,
+  "cuda_calls_found": [
+    {
+      "call": "cuda_runtime.h",
+      "line": 39,
+      "hip_equivalent": "hip/hip_runtime.h"
+    },
+    {
+      "call": "__global__",
+      "line": 47,
+      "hip_equivalent": "__global__"
+    },
+    {
+      "call": "cudaMalloc",
+      "line": 92,
+      "hip_equivalent": "hipMalloc"
+    },
+    {
+      "call": "cudaMalloc",
+      "line": 101,
+      "hip_equivalent": "hipMalloc"
+    },
+    {
+      "call": "cudaMalloc",
+      "line": 110,
+      "hip_equivalent": "hipMalloc"
+    },
+    {
+      "call": "cudaMemcpy",
+      "line": 121,
+      "hip_equivalent": "hipMemcpy"
+    },
+    {
+      "call": "cudaMemcpy",
+      "line": 128,
+      "hip_equivalent": "hipMemcpy"
+    },
+    {
+      "call": "<<<...>>>",
+      "line": 139,
+      "hip_equivalent": "hipLaunchKernelGGL"
+    },
+    {
+      "call": "cudaMemcpy",
+      "line": 150,
+      "hip_equivalent": "hipMemcpy"
+    },
+    {
+      "call": "cudaFree",
+      "line": 168,
+      "hip_equivalent": "hipFree"
+    },
+    {
+      "call": "cudaFree",
+      "line": 175,
+      "hip_equivalent": "hipFree"
+    },
+    {
+      "call": "cudaFree",
+      "line": 182,
+      "hip_equivalent": "hipFree"
+    }
+  ],
+  "total_conversions_needed": 12
+}

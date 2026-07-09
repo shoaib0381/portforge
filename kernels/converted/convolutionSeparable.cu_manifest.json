@@ -1,0 +1,32 @@
+{
+  "filename": "convolutionSeparable.cu",
+  "total_lines": 192,
+  "cuda_calls_found": [
+    {
+      "call": "cudaMemcpyToSymbol",
+      "line": 42,
+      "hip_equivalent": "hipMemcpyToSymbol"
+    },
+    {
+      "call": "__global__",
+      "line": 53,
+      "hip_equivalent": "__global__"
+    },
+    {
+      "call": "<<<...>>>",
+      "line": 115,
+      "hip_equivalent": "hipLaunchKernelGGL"
+    },
+    {
+      "call": "__global__",
+      "line": 127,
+      "hip_equivalent": "__global__"
+    },
+    {
+      "call": "<<<...>>>",
+      "line": 190,
+      "hip_equivalent": "hipLaunchKernelGGL"
+    }
+  ],
+  "total_conversions_needed": 5
+}

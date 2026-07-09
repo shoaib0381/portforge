@@ -1,0 +1,7 @@
+Key conversion decisions:
+- Replace `<cuda_runtime.h>` with `<hip/hip_runtime.h>` and remove CUDA helper headers (`helper_cuda.h`, `helper_functions.h`), providing a custom `HIP_CHECK` macro and simplified device selection.
+- Convert all CUDA runtime API calls (`cudaMalloc`, `cudaMemcpy`, `cudaFree`, `cudaMemset`, `cudaDeviceGetAttribute`) to their `hip` equivalents.
+- Replace kernel launch `<<<...>>>` with `hipLaunchKernelGGL`.
+- Change cooperative groups includes to `<hip/hip_cooperative_groups.h>` and `<hip/hip_cooperative_groups/reduce.h>` for HIP compatibility.
+- Replace `__CUDA_ARCH__` guards with `__HIP_DEVICE_COMPILE__` to ensure device code compiles under HIP; the original Volta+ requirement is relaxed as HIP cooperative groups support is assumed on capable AMD hardware.
+- Use `hipDeviceAttributeComputeCapabilityMajor` for architecture query.

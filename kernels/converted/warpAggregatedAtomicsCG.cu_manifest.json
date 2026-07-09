@@ -1,0 +1,122 @@
+{
+  "filename": "warpAggregatedAtomicsCG.cu",
+  "total_lines": 1,
+  "cuda_calls_found": [
+    {
+      "call": "cuda_runtime.h",
+      "line": 1,
+      "hip_equivalent": "hip/hip_runtime.h"
+    },
+    {
+      "call": "atomicAdd",
+      "line": 1,
+      "hip_equivalent": "atomicAdd"
+    },
+    {
+      "call": "atomicAdd",
+      "line": 1,
+      "hip_equivalent": "atomicAdd"
+    },
+    {
+      "call": "cudaMalloc",
+      "line": 1,
+      "hip_equivalent": "hipMalloc"
+    },
+    {
+      "call": "cudaMalloc",
+      "line": 1,
+      "hip_equivalent": "hipMalloc"
+    },
+    {
+      "call": "cudaMemcpy",
+      "line": 1,
+      "hip_equivalent": "hipMemcpy"
+    },
+    {
+      "call": "cudaMemcpy",
+      "line": 1,
+      "hip_equivalent": "hipMemcpy"
+    },
+    {
+      "call": "cudaMalloc",
+      "line": 1,
+      "hip_equivalent": "hipMalloc"
+    },
+    {
+      "call": "cudaMalloc",
+      "line": 1,
+      "hip_equivalent": "hipMalloc"
+    },
+    {
+      "call": "cudaMemcpy",
+      "line": 1,
+      "hip_equivalent": "hipMemcpy"
+    },
+    {
+      "call": "cudaMemcpy",
+      "line": 1,
+      "hip_equivalent": "hipMemcpy"
+    },
+    {
+      "call": "cudaFree",
+      "line": 1,
+      "hip_equivalent": "hipFree"
+    },
+    {
+      "call": "cudaFree",
+      "line": 1,
+      "hip_equivalent": "hipFree"
+    },
+    {
+      "call": "cudaMalloc",
+      "line": 1,
+      "hip_equivalent": "hipMalloc"
+    },
+    {
+      "call": "cudaMalloc",
+      "line": 1,
+      "hip_equivalent": "hipMalloc"
+    },
+    {
+      "call": "cudaMalloc",
+      "line": 1,
+      "hip_equivalent": "hipMalloc"
+    },
+    {
+      "call": "cudaMemcpy",
+      "line": 1,
+      "hip_equivalent": "hipMemcpy"
+    },
+    {
+      "call": "cudaMemcpy",
+      "line": 1,
+      "hip_equivalent": "hipMemcpy"
+    },
+    {
+      "call": "cudaMemcpy",
+      "line": 1,
+      "hip_equivalent": "hipMemcpy"
+    },
+    {
+      "call": "cudaFree",
+      "line": 1,
+      "hip_equivalent": "hipFree"
+    },
+    {
+      "call": "cudaFree",
+      "line": 1,
+      "hip_equivalent": "hipFree"
+    },
+    {
+      "call": "cudaFree",
+      "line": 1,
+      "hip_equivalent": "hipFree"
+    },
+    {
+      "call": "<<<...>>>",
+      "line": 1,
+      "hip_equivalent": "hipLaunchKernelGGL"
+    }
+  ],
+  "total_conversions_needed": 23
+}
