@@ -66,11 +66,21 @@ CUDA Code → [AST Parser] → [LLM Migration Agent] → [HIP Code] → [hipcc C
 |-----------|-----------|
 | **GPU Hardware** | AMD MI300X (192GB HBM3) |
 | **GPU Software** | ROCm 7.2.4, HIP, hipcc, rocprof |
-| **AI Model** | DeepSeek-V4-Pro via Fireworks AI |
+| **AI Model** | Google Gemma 3 27B IT via Fireworks AI |
 | **Backend** | Python 3.11, FastAPI, Uvicorn |
 | **Frontend** | HTML5, CSS3, Vanilla JavaScript |
 | **Code Analysis** | Custom AST Parser (regex + tree-sitter) |
 | **Cloud** | AMD Developer Cloud (ATL1 region) |
+
+## 🏆 Gemma 4 Bonus Challenge
+PortForge participates in the Best Use of Gemma 4 bonus 
+challenge ($6,000 prize pool). We use Google's Gemma model 
+via Fireworks AI API as our core AI reasoning engine for 
+CUDA-to-HIP code migration. The Gemma model analyzes CUDA 
+kernel semantics, understands GPU programming patterns, and 
+generates accurate HIP equivalents — demonstrating Gemma's 
+capability in highly technical, domain-specific code 
+intelligence tasks running on AMD infrastructure.
 
 ## Project Structure
 
@@ -148,7 +158,7 @@ curl -X POST http://localhost:8001/api/migrate \
 
 1. **Upload or Select:** Upload a custom `.cu` file or select a legacy CUDA kernel template.
 2. **AST Parsing:** The custom AST Parser scans the code for all CUDA-specific API calls, memory configurations, and headers.
-3. **Agent Delegation:** The Migration Agent sends the source code and the AST manifest to the DeepSeek-V4-Pro model.
+3. **Agent Delegation:** The Migration Agent sends the source code and the AST manifest to the Gemma 3 27B IT model.
 4. **Semantic Translation:** The LLM generates the equivalent HIP code alongside a detailed reasoning trace explaining its architectural choices.
 5. **Hardware Compilation:** `hipcc` compiles the generated HIP code remotely on an AMD MI300X via SSH.
 6. **Performance Benchmarking:** `rocprof` benchmarks the execution on real AMD hardware.

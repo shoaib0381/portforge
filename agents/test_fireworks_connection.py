@@ -20,7 +20,7 @@ def test_fireworks():
     }
     
     data = {
-        "model": "accounts/fireworks/models/deepseek-v4-pro",
+        "model": "accounts/fireworks/models/gemma-3-27b-it",
         "messages": [
             {"role": "user", "content": "Say hello and confirm you are working"}
         ],
