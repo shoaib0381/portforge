@@ -26,7 +26,7 @@ def migrate_kernel(filepath: str, manifest_filepath: str, mode: str = "code_only
         manifest_data = json.load(f)
         
     # Gemma model used for AMD Hackathon ACT II Gemma Prize eligibility
-    model_name = "accounts/fireworks/models/gemma-3-27b-it"
+    model_name = "accounts/fireworks/models/deepseek-v4-pro"
     
     if mode == "code_only":
         prompt_instruction = "Output ONLY the raw HIP code in a single code block. Do NOT provide any reasoning, explanation, or commentary before or after the code block."
