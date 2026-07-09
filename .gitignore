@@ -3,7 +3,6 @@ __pycache__/
 *.pyc
 node_modules/
 .venv/
-*.hip
 *.o
 models.json
 update_ui.py
