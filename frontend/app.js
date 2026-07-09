@@ -289,7 +289,7 @@ async function selectPlaygroundSnippet(key) {
   try {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 3000);
-    const response = await fetch(`http://localhost:8001/api/kernel/${key}`, { signal: controller.signal });
+    const response = await fetch(`http://3.239.166.194:8001/api/kernel/${key}`, { signal: controller.signal });
     clearTimeout(timeout);
     if (!response.ok) throw new Error("Failed to load kernel");
     
@@ -367,7 +367,7 @@ async function triggerPlaygroundTranslation() {
     console.log("Fetching from API...");
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 120000);
-    const response = await fetch("http://localhost:8001/api/migrate", {
+    const response = await fetch("http://3.239.166.194:8001/api/migrate", {
       method: "POST",
       body: formData,
       signal: controller.signal
@@ -1387,7 +1387,7 @@ async function loadKernelsFromAPI() {
     console.log("Fetching from API...");
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 3000);
-    const response = await fetch("http://localhost:8001/api/kernels", { signal: controller.signal });
+    const response = await fetch("http://3.239.166.194:8001/api/kernels", { signal: controller.signal });
     clearTimeout(timeout);
     if (!response.ok) throw new Error("API kernels failed");
     console.log("API success");
@@ -1422,7 +1422,7 @@ async function updateStatsBarFromAPI() {
     console.log("Fetching from API...");
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 3000);
-    const response = await fetch("http://localhost:8001/api/status", { signal: controller.signal });
+    const response = await fetch("http://3.239.166.194:8001/api/status", { signal: controller.signal });
     clearTimeout(timeout);
     if (!response.ok) throw new Error("API stats failed");
     console.log("API success");

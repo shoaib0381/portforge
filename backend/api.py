@@ -28,7 +28,7 @@ app = FastAPI(title="PortForge API")
 # Enable CORS for localhost:8000
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:8000", "http://127.0.0.1:8000"],
+    allow_origins=["http://localhost:8000", "http://127.0.0.1:8000", "http://portforge-app.s3-website-us-east-1.amazonaws.com"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
