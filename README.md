@@ -149,7 +149,7 @@ http://localhost:8000
 
 **Example request for migration:**
 ```bash
-curl -X POST http://localhost:8001/api/migrate \
+curl -X POST http://3.239.166.194:8001/api/migrate \
   -F "filename=custom_kernel.cu" \
   -F "cuda_code=$(cat custom_kernel.cu)"
 ```

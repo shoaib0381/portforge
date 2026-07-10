@@ -79,7 +79,7 @@ def update_app_js():
   if (hipEl) hipEl.innerHTML = spinnerHTML;
 
   try {
-    const response = await fetch(`http://localhost:8001/api/kernel/${key}`);
+    const response = await fetch(`http://3.239.166.194:8001/api/kernel/${key}`);
     if (!response.ok) throw new Error("Failed to load kernel");
     
     const data = await response.json();
@@ -145,7 +145,7 @@ def update_app_js():
       formData.append("filename", playgroundActiveKernel + ".cu");
       formData.append("cuda_code", cudaCode);
       
-      const response = await fetch("http://localhost:8001/api/migrate", {
+      const response = await fetch("http://3.239.166.194:8001/api/migrate", {
         method: "POST",
         body: formData
       });
@@ -183,7 +183,7 @@ async function loadKernelsFromAPI() {
     const listEl = document.getElementById("kernel-list");
     if (!listEl) return;
     
-    const response = await fetch("http://localhost:8001/api/kernels");
+    const response = await fetch("http://3.239.166.194:8001/api/kernels");
     const kernels = await response.json();
     
     listEl.innerHTML = ""; // Clear existing hardcoded
@@ -219,7 +219,7 @@ async function loadKernelsFromAPI() {
 // Fetch stats for the stats bar
 async function updateStatsBarFromAPI() {
   try {
-    const response = await fetch("http://localhost:8001/api/status");
+    const response = await fetch("http://3.239.166.194:8001/api/status");
     const stats = await response.json();
     
     // Update data-target attributes
