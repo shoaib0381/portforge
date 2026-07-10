@@ -1011,9 +1011,6 @@ section.in-view {
 }
 
 .panel-label {
-  position: absolute;
-  top: 12px;
-  right: 80px;
   font-family: var(--font-mono);
   font-size: 10px;
   font-weight: bold;
