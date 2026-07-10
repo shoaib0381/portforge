@@ -915,14 +915,15 @@ section.in-view {
 
 .snippet-selector-bar {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 12px 16px;
   margin-bottom: 24px;
   background: var(--bg-panel);
   border: 1px solid var(--border);
   border-radius: 12px;
-  padding: 12px 16px;
-  gap: 16px;
 }
 
 @media (max-width: 768px) {
@@ -934,8 +935,11 @@ section.in-view {
 
 .snippet-tabs {
   display: flex;
-  gap: 8px;
+  flex-wrap: nowrap;
   overflow-x: auto;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
